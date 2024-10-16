@@ -10,15 +10,22 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-    var bmiRes: String!
+    var bmiRes: BMI?
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var adviceLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultLabel.text = bmiRes
-        // Do any additional setup after loading the view.
+        if let b = bmiRes {
+            resultLabel.text = String(format: "%.2f", b.value)
+            adviceLabel.text = b.advice
+            view.backgroundColor = b.color
+        } else {
+            resultLabel.text = "No Result"
+            adviceLabel.text = "Try again later"
+        }
     }
     
 

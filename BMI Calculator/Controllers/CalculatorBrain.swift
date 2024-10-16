@@ -17,10 +17,11 @@ struct CalculatorBrain {
         self.weight = weight
     }
     
-    var bmi: String! {
+    func calculateBMI() -> BMI? {
         if let h = height, let w = weight {
-            return String(format: "%.1f", w / (h * h))
+            var bmi = BMI(w / (h * h))
+            return bmi
         }
-        return "0.0"
+        return nil
     }
 }
